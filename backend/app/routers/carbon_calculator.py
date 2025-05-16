@@ -13,7 +13,7 @@ async def calculate_electric_carbon_emission(request: Request, item: ElectricCar
 
     try:
         calculator_service = CalculatorService.CalculatorService(ElectronicCalculator.ElectronicCalculator)
-        calculated_result = calculator_service.calculate(activity_data, factor)
+        calculated_result = calculator_service.calculating(activity_data, factor)
     except Exception as e:
         status_code = 500
 
