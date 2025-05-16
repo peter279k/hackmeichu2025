@@ -9,7 +9,7 @@ def test_calculate_electric_carbon_emission():
 
     json_dict = {
         'activity_data': 1000.0,
-        'carbon_factor': 0.492,
+        'factor': 0.492,
     }
 
     response = client.post('/api/v1/calculate_electric', headers=headers, json=json_dict)
