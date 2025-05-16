@@ -31,7 +31,7 @@ async def calculate_electric_carbon_emission(request: Request, item: ElectricCar
         {
             'status': status_code,
             'message': 'Calculating electric carbon emission value is done.',
-            'data': [calculated_result],
+            'data': calculated_result,
         },
         status_code=status_code
     )
