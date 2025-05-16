@@ -12,8 +12,8 @@ async def calculate_electric_carbon_emission(request: Request, item: ElectricCar
     factor = item_dict['factor']
 
     try:
-        calculator_service = CalculatorService.CalculatorService(ElectronicCalculator.ElectronicCalculator)
-        calculated_result = calculator_service.calculating(activity_data, factor)
+        calculator_service = CalculatorService.CalculatorService(ElectronicCalculator.ElectronicCalculator())
+        calculated_result = calculator_service.calculate(activity_data, factor)
     except Exception as e:
         status_code = 500
 
@@ -21,7 +21,7 @@ async def calculate_electric_carbon_emission(request: Request, item: ElectricCar
             {
                 'status': status_code,
                 'message': str(e),
-                'data': [item_dict],
+                'data': item_dict,
             },
             status_code=status_code
         )
