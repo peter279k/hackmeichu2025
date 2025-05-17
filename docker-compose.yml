@@ -6,6 +6,13 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --workers 4 --port 8000
     networks:
       - carbon-calculator
+  carbon-factor-api:
+    build:
+      context: carbon_factor_api/
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --workers 4 --port 8000
+    networks:
+      - carbon-calculator
   cron-carbon-factor-crawler:
     build:
       context: cron_carbon_factor_crawler/
