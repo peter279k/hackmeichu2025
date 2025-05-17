@@ -4,7 +4,7 @@ import csv
 import pymongo
 
 
-path = '/root/gwp-factors/datasets/electric_co2e.csv'
+path = '/gwp-factors/datasets/electric_co2e.csv'
 if os.path.isfile(path) is False:
     print(f'{path} is not found.')
     sys.exit(1)
