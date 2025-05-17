@@ -6,6 +6,21 @@ services:
     command: uvicorn app.main:app --host 0.0.0.0 --workers 4 --port 8000
     networks:
       - carbon-calculator
+  cron-carbon-factor-crawler:
+    build:
+      context: cron_carbon_factor_crawler/
+      dockerfile: Dockerfile
+    command: cron && tail -f /var/log/cron.log
+  mongodb:
+    image: mongo:7.0.16-jammy
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=carbon_factor
+    restart: always
+
 
 networks:
   carbon-calculator:

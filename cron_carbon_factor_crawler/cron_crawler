@@ -1,0 +1,2 @@
+50 * * * * root cd /root/gwp-factors/ && python ./electric/moeaea_handler.py >> /var/log/cron.log 2>&1
+*/20 * * * * root python3 /root/store_electric_factor.py >> /var/log/cron.log 2>&1
