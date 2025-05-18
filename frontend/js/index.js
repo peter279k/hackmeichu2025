@@ -39,7 +39,7 @@ async function calculateElectricCarbonFactor(electricCarbonFactor) {
         console.log(data.data);
         Swal.fire({
             'title': '計算結果',
-            'text': data.data,
+            'text': `${data.data} 公噸/CO2e`,
             'icon': 'success',
         });
     }).fail((jqXHR, textStatus, error) => {
