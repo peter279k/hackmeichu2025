@@ -12,7 +12,7 @@ if os.path.isfile(path) is False:
 electric_factor_dict = {'data': []}
 with open(path, 'r') as f:
     reader = csv.reader(f)
-    for row in reader[1:]:
+    for row in list(reader)[1:]:
         electric_factor_dict['data'] += {
             'year': row[0],
             'co2e': row[1],
