@@ -16,4 +16,5 @@ app = FastAPI(
     }
 )
 
+app.include_router(carbon_factor_router)
 app.include_router(carbon_calculator_router)
