@@ -22,3 +22,10 @@ $ docker compose ps
 ## Web Demo
 
 - Please visit this [page](https://hackmeichu2025.peterli.website).
+
+## References
+
+- https://jquery.com
+- https://fastapi.tiangolo.com
+- https://docs.docker.com/compose
+- https://bbbootstrap.com/snippets/request-demo-form-validation-12274818
