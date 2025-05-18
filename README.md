@@ -18,3 +18,7 @@ $ git clone https://github.com/peter279k/hackmeichu2025
 $ docker compose up --build -d
 $ docker compose ps
 ```
+
+## Web Demo
+
+- Please visit this [page](https://hackmeichu2025.peterli.website).
