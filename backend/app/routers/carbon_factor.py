@@ -26,7 +26,7 @@ async def get_electric_carbon_factor(request: Request):
     return JSONResponse(
         {
             'status': status_code,
-            'message': 'Calculating electric carbon emission value is done.',
+            'message': 'Get electric carbon factor value is done.',
             'data': response.json(),
         },
         status_code=status_code
