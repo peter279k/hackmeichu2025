@@ -1,7 +1,7 @@
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 
-from carbon_factor_api.app.modules import ElectricCarbonFactor
+from app.modules import ElectricCarbonFactor
 
 
 async def electric_carbon_factor(request: Request):
