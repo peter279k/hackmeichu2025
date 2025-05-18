@@ -18,6 +18,8 @@ services:
       context: cron_carbon_factor_crawler/
       dockerfile: Dockerfile
     command: cron -f
+    networks:
+      - carbon-calculator
   mongodb:
     image: mongo:7.0.16-jammy
     volumes:
@@ -27,6 +29,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=admin
       - MONGO_INITDB_DATABASE=carbon_factor
     restart: always
+    networks:
+      - carbon-calculator
 
 
 networks:

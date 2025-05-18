@@ -7,12 +7,7 @@ client = TestClient(app)
 def test_get_electric_carbon_factor():
     headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
-    json_dict = {
-        'activity_data': 1000.0,
-        'factor': 0.492,
-    }
-
-    response = client.post('/api/v1/electric_carbon_factor', headers=headers, json=json_dict)
+    response = client.get('/api/v1/electric_carbon_factor', headers=headers)
 
     response_json = response.json()
 
