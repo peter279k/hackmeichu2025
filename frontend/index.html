@@ -26,13 +26,13 @@
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請輸入API Endpoint<span class="text-danger"> *</span></label> <input type="text" id="api-endpoint" name="api-endpoint" placeholder="請輸入API端點網址"> </div>
                     </div>
                     <div name="electric-carbon-factor-block" class="row justify-content-between text-left">
-                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請輸入電力度數(千度/年)<span class="text-danger"> *</span></label> <input type="text" id="kwh-value" name="kwh-value" placeholder="請輸入電力度數"> </div>
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請輸入電力度數(度/年)<span class="text-danger"> *</span></label> <input type="text" id="kwh-value" name="kwh-value" placeholder="請輸入電力度數"> </div>
                     </div>
                     <div name="electric-carbon-factor-block" class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請選擇電力碳排放係數<span class="text-danger"> *</span></label> <select class="form-control" id="electric-carbon-factor" name="electric-carbon-factor" placeholder="請選擇電力碳排放係數"></select> </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button id="calculate-carbon-factor" type="submit" class="btn-block btn-primary">送出</button> </div>
+                        <div class="form-group col-sm-6"> <button id="calculate-carbon-value" type="submit" electric_carbon_factor="" class="btn-block btn-primary">送出</button> </div>
                     </div>
                 </form>
             </div>
@@ -41,9 +41,13 @@
 </div>
 <script>
      $(() => {
+        $('#electric-carbon-factor').on('change', function() {
+            let carbonFactor = $(this).find(':selected').val();
+            $('#calculate-carbon-value').attr('electric_carbon_factor', carbonFactor);
+        });
         $('div[name="electric-carbon-factor-block"]').hide();
 
-        $('#calculate-carbon-factor').click(async (e) => {
+        $('#calculate-carbon-value').click(async (e) => {
             e.preventDefault();
             let apiEndpoint = $('#api-endpoint').val();
             if (apiEndpoint === '') {
@@ -74,7 +78,8 @@
                 await fetchElectricCarbonFactor();
                 e.target.textContent = '計算';
             } else {
-                // await calculateElectricCarbonFactor();
+                let electricCarbonFactor = e.target.getAttribute('electric_carbon_factor');
+                await calculateElectricCarbonFactor(electricCarbonFactor);
             }
         });
      });
