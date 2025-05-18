@@ -6,10 +6,11 @@ async function fetchElectricCarbonFactor() {
         method: 'GET',
         headers: {'Accept': 'application/json'},
     }).done((data) => {
-        console.log(JSON.parse(data));
-    }).error((error) => {
+        console.log(data);
+    }).fail((jqXHR, textStatus, error) => {
+        console.log(jqXHR);
         Swal.fire({
-            'title': '錯誤',
+            'title': `錯誤，${textStatus}`,
             'text': error,
             'icon': 'error',
         });
