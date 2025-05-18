@@ -71,10 +71,10 @@
 
             let buttonText = e.target.textContent;
             if (buttonText === '送出') {
-                //await fetchElectricCarbonFactor();
+                await fetchElectricCarbonFactor();
                 e.target.textContent = '計算';
             } else {
-
+                // await calculateElectricCarbonFactor();
             }
         });
      });
