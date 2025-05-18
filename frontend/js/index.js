@@ -7,13 +7,13 @@ async function fetchElectricCarbonFactor() {
         headers: {'Accept': 'application/json'},
     }).done((data) => {
         console.log(JSON.parse(data));
-    }).error(error) => {
+    }).error((error) => {
         Swal.fire({
             'title': '錯誤',
             'text': error,
             'icon': 'error',
         });
-    };
+    });
 }
 
 async function calculateElectricCarbonFactor() {
