@@ -3,7 +3,7 @@ import pymongo
 
 class ElectronicCarbonFactor:
     def __init__(self):
-        self.db_name = 'carbon_factor'
+        self.db_name = 'electric_carbon_factor'
         self.collection = 'electric_carbon_factor_collection'
         self.mongo_client = pymongo.MongoClient(
             host='mongodb',
