@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/index.js"></script>
+    <title>HackMeichu2025 Demonstration</title>
+</head>
+<body>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>碳排放量計算器</h3>
+            <p class="blue-text">輸入活動量，接著計算出碳排放量的簡易Demo</p>
+            <div class="card">
+                <h5 class="text-center mb-4">Electric Carbon Emission Calculator</h5>
+                <form class="form-card" onsubmit="event.preventDefault()">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請輸入API Endpoint<span class="text-danger"> *</span></label> <input type="text" id="api-endpoint" name="api-endpoint" placeholder="請輸入API端點網址"> </div>
+                    </div>
+                    <div name="electric-carbon-factor-block" class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請輸入電力度數(千度/年)<span class="text-danger"> *</span></label> <input type="text" id="kwh-value" name="kwh-value" placeholder="請輸入電力度數"> </div>
+                    </div>
+                    <div name="electric-carbon-factor-block" class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">請選擇電力碳排放係數<span class="text-danger"> *</span></label> <select class="form-control" id="electric-carbon-factor" name="electric-carbon-factor" placeholder="請選擇電力碳排放係數"></select> </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="form-group col-sm-6"> <button id="calculate-carbon-factor" type="submit" class="btn-block btn-primary">送出</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+     $(() => {
+        $('div[name="electric-carbon-factor-block"]').hide();
+
+        $('#calculate-carbon-factor').click(async (e) => {
+            e.preventDefault();
+            let apiEndpoint = $('#api-endpoint').val();
+            if (apiEndpoint === '') {
+                Swal.fire({
+                    'title': '錯誤',
+                    'text': '請輸入API端點網址',
+                    'icon': 'error',
+                });
+
+                return false;
+            }
+
+            try {
+                let url = new URL(apiEndpoint);
+            } catch(error) {
+                Swal.fire({
+                    'title': '錯誤',
+                    'text': error,
+                    'icon': 'error',
+                });
+                return false;
+            }
+
+            $('div[name="electric-carbon-factor-block"]').show();
+
+            let buttonText = e.target.textContent;
+            if (buttonText === '送出') {
+                //await fetchElectricCarbonFactor();
+                e.target.textContent = '計算';
+            } else {
+
+            }
+        });
+     });
+</script>
+</body>
+</html>
