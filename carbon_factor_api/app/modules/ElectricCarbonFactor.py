@@ -17,5 +17,6 @@ class ElectronicCarbonFactor:
         ele_carbon_factor_collection = db[self.collection]
 
         result = ele_carbon_factor_collection.find_one()
+        del result['_id']
 
         return result
